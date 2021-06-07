@@ -7,16 +7,16 @@ const { v4: uuidv4 } = require('uuid');
 const readA = util.promisify(fs.readFile);
 const writeA = util.promisify(fs.writeFile);
 
-class Store{
-    async getNotes(){
+class Store {
+    async getNotes() {
         console.log("Get notes");
         const notes = await readA('db/db.json', JSON.stringify());
         let result = [];
-        try{
+        try {
             result = JSON.parse(notes);
             console.log("Get notes response: " + result);
         }
-        catch(err){
+        catch (err) {
             console.log("No notes found");
             result = [];
         }
@@ -33,11 +33,23 @@ class Store{
         // })
     }
 
-    setNotes(note){
-     //TODO
+    setNotes(note) {
+        var title = note.title;
+        var text = note.text;
+
+        const createdNote = {
+            title,
+            text,
+            id: uuidv4()
+        };
+
+        return this.getNotes()
+            .then(notes => {
+                writeA('db/db.json', JSON.stringify([...notes, createdNote]))
+            });
     }
 
-    deleteNotes(id){
+    deleteNotes(id) {
         //TODO
     }
 }
