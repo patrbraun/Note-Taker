@@ -2,6 +2,8 @@
 ## Description
   * Uses express to allow a user to take and track notes in a browser.
 
+  * Link to app: https://note-taker-prb.herokuapp.com/
+
 ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
