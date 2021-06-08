@@ -4,6 +4,9 @@
 
   * Link to app: https://note-taker-prb.herokuapp.com/
 
+  ![Note-taker screenshot](./public/assets/images/notetaker_screenshot.PNG)
+
+
 ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
