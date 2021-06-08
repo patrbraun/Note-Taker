@@ -14,7 +14,6 @@ class Store {
         let result = [];
         try {
             result = JSON.parse(notes);
-            console.log("Get notes response: " + result);
         }
         catch (err) {
             console.log("No notes found");
@@ -34,6 +33,7 @@ class Store {
     }
 
     setNotes(note) {
+        console.log("Set Notes");
         var title = note.title;
         var text = note.text;
 
@@ -50,7 +50,25 @@ class Store {
     }
 
     deleteNotes(id) {
-        //TODO
+        console.log("Delete note");
+        return this.getNotes()
+            //gets notes array
+            .then(notes => {
+
+                //Find index of note with id parameter
+                let index = -1;
+                for (var i = 0; i < notes.length; i++) {
+                    if (notes[i].id === id) {
+                        index = i;
+                    }
+                }
+                //removes selected note if found
+                if (index > -1) {
+                    notes.splice(index, 1);
+                    //writes resulting array to database
+                    writeA('db/db.json', JSON.stringify(notes));
+                }
+            });
     }
 }
 
