@@ -44,7 +44,9 @@ class Store {
         };
 
         return this.getNotes()
+            //Gets notes array
             .then(notes => {
+                //adds createdNote to the notes array, then writes it to the json
                 writeA('db/db.json', JSON.stringify([...notes, createdNote]))
             });
     }
